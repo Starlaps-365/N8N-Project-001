@@ -1,0 +1,39 @@
+services:
+  n8n-experiments:
+    image: n8nio/n8n:latest
+    container_name: n8n-experiments
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=admin
+      - N8N_BASIC_AUTH_PASSWORD=admin123
+    volumes:
+      - ./data-experiments:/home/node/.n8n
+    restart: unless-stopped
+
+  n8n-staging:
+    image: n8nio/n8n:latest
+    container_name: n8n-staging
+    ports:
+      - "5679:5678"
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=admin
+      - N8N_BASIC_AUTH_PASSWORD=admin123
+    volumes:
+      - ./data-staging:/home/node/.n8n
+    restart: unless-stopped
+
+  n8n-production:
+    image: n8nio/n8n:latest
+    container_name: n8n-production
+    ports:
+      - "5680:5678"
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=admin
+      - N8N_BASIC_AUTH_PASSWORD=admin123
+    volumes:
+      - ./data-production:/home/node/.n8n
+    restart: unless-stopped

@@ -1,0 +1,7 @@
+data-experiments/
+data-staging/
+data-production/
+.env
+credentials/credential-mapping.json
+*.log
+crash.journal
