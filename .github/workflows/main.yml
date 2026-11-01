@@ -1,0 +1,22 @@
+name: Deploy n8n Workflows
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy-production:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Show we got the secret safely
+        run: |
+          echo "Deploying to Production n8n"
+          echo "API URL is set: ${{ secrets.N8N_API_URL != '' }}"
+          echo "API Key is set: ${{ secrets.N8N_API_KEY != '' }}"
+          echo "Workflows found:"
+          ls -R workflows/
